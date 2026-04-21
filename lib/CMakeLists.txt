@@ -1,0 +1,7 @@
+add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/no-OS-FatFS-SD-SDIO-SPI-RPi-Pico/src)
+add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/bsp)
+add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/lvgl)
+add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/GUI)
+add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/Fonts)
+add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/psramlib)
+add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/pio-usb)
