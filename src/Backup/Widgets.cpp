@@ -8,15 +8,7 @@
 #include "Widgets.h"
 #include <cstdio>
 
-const char * Widgets::xTopMap[] = { "About", "Status", "Analysis", "Droids", "" };
-const char * Widgets::xLeftMap[] = {
-		"2026",  "\n",
-		"2025",  "\n",
-		"2024",  "\n",
-		"2023",  "\n",
-		"2022",  "\n",
-		"2021",  "\n",
-		"2020", "" };
+
 
 Widgets::Widgets() {
 
@@ -51,27 +43,7 @@ void Widgets::initTile1() {
 	lv_style_init(&xStyleTile);
 	lv_style_set_bg_color(&xStyleTile, lv_color_hex(0x000000));
 	lv_style_set_bg_opa(&xStyleTile, LV_OPA_COVER);
-	lv_obj_add_style(xTile1, &xStyleTile, 0);
-
-	lv_style_init(&xStyleBracketMain);
-	lv_style_set_bg_color(&xStyleBracketMain, lv_color_make(0x10, 0x10, 0x10));
-	lv_style_set_bg_opa(&xStyleBracketMain, LV_OPA_70);
-	lv_style_set_border_width(&xStyleBracketMain, 0);
-	lv_style_set_radius(&xStyleBracketMain, 0);
-	lv_style_set_pad_all(&xStyleBracketMain, 0);
-	lv_style_set_pad_gap(&xStyleBracketMain, 0);
-
-	lv_style_init(&xStyleBracketBtn);
-	lv_style_set_bg_color(&xStyleBracketBtn, lv_color_hex(0xFF9F1C));
-	lv_style_set_bg_opa(&xStyleBracketBtn, LV_OPA_COVER);
-	lv_style_set_text_color(&xStyleBracketBtn, lv_color_white());
-	lv_style_set_text_font(&xStyleBracketBtn, &lv_font_montserrat_24);
-	lv_style_set_border_width(&xStyleBracketBtn, 1);
-	lv_style_set_border_color(&xStyleBracketBtn, lv_color_hex(0x000000));
-	lv_style_set_border_side(&xStyleBracketBtn, LV_BORDER_SIDE_BOTTOM | LV_BORDER_SIDE_RIGHT);
-	lv_style_set_radius(&xStyleBracketBtn, 0);
-	lv_style_set_pad_all(&xStyleBracketBtn, 0);
-	lv_style_set_pad_gap(&xStyleBracketBtn, 0);
+	//lv_obj_add_style(xTile1, &xStyleTile, 0);
 
 	lv_style_init(&xLabelSt);
 	lv_style_set_text_font(&xLabelSt, &lv_font_montserrat_32);
@@ -88,38 +60,6 @@ void Widgets::initTile1() {
 	lv_obj_align(pDrJonLbl, LV_ALIGN_CENTER, -170, 0);
 	lv_obj_add_style(pDrJonLbl , &xLabelSt,  LV_PART_MAIN);
 
-	//Bracket Math
-	uint bracketWidth = 70;
-	uint bracketHeight = 50;
-
-	pBracketTop = lv_btnmatrix_create(xTile1);
-	lv_btnmatrix_set_map(pBracketTop, xTopMap);
-	//lv_btnmatrix_set_btn_width(pBracketTop, 0, 2);  // blank corner filler
-	lv_obj_set_size(pBracketTop, hor - bracketWidth, bracketHeight);
-	lv_obj_align(pBracketTop, LV_ALIGN_TOP_LEFT, bracketWidth, 0);
-	lv_obj_add_style(pBracketTop, &xStyleBracketMain, LV_PART_MAIN);
-	lv_obj_add_style(pBracketTop, &xStyleBracketBtn, LV_PART_ITEMS);
-
-	// Left bracket on the left edge with a blank top-left corner cell
-	pBracketLeft = lv_btnmatrix_create(xTile1);
-	lv_btnmatrix_set_map(pBracketLeft, xLeftMap);
-	lv_obj_set_size(pBracketLeft, bracketWidth, ver - bracketHeight*2);
-	lv_obj_align(pBracketLeft, LV_ALIGN_TOP_LEFT, 0, bracketHeight*2);
-	lv_obj_add_style(pBracketLeft, &xStyleBracketMain, LV_PART_MAIN);
-	lv_obj_add_style(pBracketLeft, &xStyleBracketBtn, LV_PART_ITEMS);
-
-	// Corner bracket image
-	LV_IMG_DECLARE(bracket);
-	pAngleBracket = lv_img_create(xTile1);
-	lv_img_set_src(pAngleBracket, &bracket);
-	lv_obj_align(pAngleBracket, LV_ALIGN_TOP_LEFT, 0, 0);
-	//lv_obj_set_style_border_width(pAngleBracket, 0, 0);
-	//lv_obj_invalidate(pAngleBracket);
-}
-
-
-/*
-
 
 
 	for (int i=0; i < NUM_ARCS; i++){
@@ -127,7 +67,7 @@ void Widgets::initTile1() {
 		lv_obj_set_size(pArcs[i], hor - (45 * i), ver - (45 * i));
 		lv_arc_set_rotation(pArcs[i], 270);
 		lv_arc_set_bg_angles(pArcs[i], 0, 0);
-		lv_obj_remove_style(pArcs[i], NULL, LV_PART_KNOB);
+		lv_obj_remove_style(pArcs[i], NULL, LV_PART_KNOB);   /*Be sure the knob is not displayed*/
 		lv_obj_clear_flag( pArcs[i],  LV_OBJ_FLAG_CLICKABLE);
 		lv_obj_set_style_arc_width(pArcs[i], 25, LV_PART_INDICATOR);
 		lv_obj_center(pArcs[i]);
@@ -166,7 +106,7 @@ void Widgets::initTile1() {
 	pTimer = lv_timer_create(timerCB, 10,  this);
 }
 
-*/
+
 
 void Widgets::timerCB(lv_timer_t * timer){
 	Widgets *self = (Widgets *)timer->user_data;

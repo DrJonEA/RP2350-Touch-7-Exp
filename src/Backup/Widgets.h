@@ -38,22 +38,15 @@ private:
 	lv_style_t xLabelSt;
 
 	lv_obj_t * pDrJonLbl;
-	lv_obj_t * pBracketTop;
-	lv_obj_t * pBracketLeft;
-	lv_obj_t * pAngleBracket;
-	lv_obj_t * pColumnLeft;
 
 	lv_obj_t * pArcs[NUM_ARCS];
 
 	lv_timer_t * pTimer;
 
-	lv_style_t xStyleBracketMain;
-	lv_style_t xStyleBracketBtn;
 
 	uint16_t xArcsStart[NUM_ARCS] = {0, 45, 90, 135, 180, 225};
 
-	static const char * xTopMap[];
-	static const char * xLeftMap[];
+
 };
 
 #endif /* EXP_LVGLDASHBOARD_SRC_WIDGETS_H_ */

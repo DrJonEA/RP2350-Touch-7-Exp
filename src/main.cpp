@@ -39,7 +39,7 @@ int main()
 
 
     struct repeating_timer lvgl_timer;
-	set_cpu_clock(240);
+	set_cpu_clock(260);//240);
     stdio_init_all();
     sleep_ms(2000);
 
@@ -56,7 +56,6 @@ int main()
     widgets.init();
     for(;;){
         lv_timer_handler();
-        //printf("Loop\n");
-        //sleep_ms(1);
+        sleep_ms(LVGL_TICK_PERIOD_MS);
     }
 }
